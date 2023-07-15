@@ -4,7 +4,8 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
 
 // The array of questions for user input
-const questions = [
+const questions = () => {
+  return inquirer.prompt([
   {
     type: 'input',
     name: 'projectTitle',
@@ -51,7 +52,8 @@ const questions = [
     name: 'questions',
     message: 'Provide information on how to reach you for questions:'
   },
-];
+]);
+};
 
 // Function to write README file
 function writeToFile(fileName, data) {
@@ -59,7 +61,7 @@ function writeToFile(fileName, data) {
     if (err) {
       console.error(err);
     } else {
-      console.log('README file has been successfully generated!');
+      console.log('README file successfully generated!');
     }
   });
 }
